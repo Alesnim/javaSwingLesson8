@@ -6,16 +6,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main {
+    private static JFrame win;
     private static JTextField name;
     private static JTextField old;
     private static JTextField color;
     private static JButton create;
+    private static boolean createRes = false;
 
     public static void main(String[] args) {
-        JFrame win = new JFrame();
+        win = new JFrame();
         createGUI(win);
         setListeners(name,old,color,create);
+        showDialog(win, createRes);
     }
+
+
 
     private static void createGUI(JFrame win) {
         // создадим окно нашего генератора
@@ -75,7 +80,16 @@ public class Main {
                 System.out.println(name.getText());
                 System.out.println(old.getText());
                 System.out.println(color.getText());
+                createRes = !createRes;
+                showDialog(win, createRes);
+
             }
         });
+    }
+    private static void showDialog(JFrame win, boolean createRes) {
+        if (createRes){
+            JOptionPane.showMessageDialog(win, "123123" );
+        }
+
     }
 }
